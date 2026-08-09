@@ -12,30 +12,65 @@
             background-color: #f9f9f9;
             box-sizing: border-box;
         }
-        
+
         h1 {
             text-align: center;
             color: #2E8B57;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 28px;
         }
 
-        
+        /* Адаптивная сетка: по умолчанию 2 колонки на ПК */
         .gallery-row {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px; 
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-       
-        .gallery-row img {
-            width: 100%; 
-            height: auto; 
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
+        /* Контейнер для картинок, чтобы они выстраивались ровно */
+        .gallery-item {
+            background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px; /* Одинаковая базовая высота для аккуратного вида */
+        }
+
+        /* Настройки отображения фото без обрезки */
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            max-height: 280px; /* Ограничиваем высоту, чтобы огромные фото не растягивались на весь экран */
+            object-fit: contain; /* ФОТО ПОМЕЩАЕТСЯ ПОЛНОСТЬЮ И НЕ ПОДРЕЗАЕТСЯ */
+            border-radius: 6px;
+            display: block;
+        }
+
+        /* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ (экраны меньше 600px) */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            .gallery-row {
+                grid-template-columns: 1fr; /* На смартфонах карточки встают в 1 колонку */
+                gap: 15px; /* Немного уменьшаем отступы на мобильных */
+            }
+
+            .gallery-item {
+                min-height: 200px; /* Чуть меньше высота контейнера на телефоне */
+                padding: 10px;
+            }
+            
+            .gallery-item img {
+                max-height: 220px;
+            }
         }
     </style>
 </head>
@@ -44,23 +79,25 @@
     <h1>Products</h1>
 
     <div class="gallery-row">
-        <img src="Aceft1g.jpg" alt="Aceft 1g">
-        <img src="Artegam100ml.jpg" alt="Artegam 100ml">
-        <img src="Artegamtablets.jpg" alt="Artegam tablets">
-        <img src="Azithromine.jpg" alt="Azithromine">
-        <img src="Ceflixe200mg.jpg" alt="Ceflixe 200mg">
-        <img src="CeflixeSyrup60ml.jpg" alt="Ceflixe Syrup 60 ml">
-        <img src="Cortivexainjection40mg.jpg" alt="Cortivexa injection 40 mg">
-        <img src="Diuravion20mg=2ml.jpg" alt="Diuravion 20mg=2ml">
-        <img src="Hemovixa5x5ml.jpg" alt="Hemovixa 5x5 ml">
-        <img src="Oclamox1x1flacon.jpg" alt="Oclamox 1x1 flacon">
-		<img src="Paracetamol125mg=5ml.jpg" alt="Paracetamol 125 mg=5 ml">
-        <img src="ParacetamolInfusion1g.jpg" alt="Paracetamol Infusion 1g">
-        <img src="Spasmovixphloroglucinol40mg=4mlinj.jpg" alt="Spasmovix Phloroglucinol 40 mg=4 ml inj">
-        <img src="Syrofensyrup100ml.jpg" alt="Syrofen syrup 100 ml">
-        <img src="TesunArtesunate60mg.jpg" alt="Tesun Artesunate 60 mg">
-        <img src="TesunArtesunate120mg.jpg" alt="Tesun Artesunate 120 mg">
-		<img src="Utervionexinjection5x1mlampoules.jpg" alt="Utervionex injection 5x1 ml ampoules">
+        <!-- Каждая картинка обернута в защитный контейнер для выравнивания -->
+        <div class="gallery-item"><img src="Aceft1g.jpg" alt="Aceft 1g"></div>
+        <div class="gallery-item"><img src="Artegam100ml.jpg" alt="Artegam 100ml"></div>
+        <div class="gallery-item"><img src="Artegamtablets.jpg" alt="Artegam tablets"></div>
+        <div class="gallery-item"><img src="Azithromine.jpg" alt="Azithromine"></div>
+        <div class="gallery-item"><img src="Ceflixe200mg.jpg" alt="Ceflixe 200mg"></div>
+        <div class="gallery-item"><img src="CeflixeSyrup60ml.jpg" alt="Ceflixe Syrup 60 ml"></div>
+        <div class="gallery-item"><img src="Cortivexainjection40mg.jpg" alt="Cortivexa injection 40 mg"></div>
+        <div class="gallery-item"><img src="Diuravion20mg=2ml.jpg" alt="Diuravion 20mg=2ml"></div>
+        <div class="gallery-item"><img src="Hemovixa5x5ml.jpg" alt="Hemovixa 5x5 ml"></div>
+        <div class="gallery-item"><img src="Oclamox1x1flacon.jpg" alt="Oclamox 1x1 flacon"></div>
+        <div class="gallery-item"><img src="Paracetamol125mg=5ml.jpg" alt="Paracetamol 125 mg=5 ml"></div>
+        <div class="gallery-item"><img src="ParacetamolInfusion1g.jpg" alt="Paracetamol Infusion 1g"></div>
+        <div class="gallery-item"><img src="Spasmovixphloroglucinol40mg=4mlinj.jpg" alt="Spasmovix Phloroglucinol 40 mg=4 ml inj"></div>
+        <div class="gallery-item"><img src="Syrofensyrup100ml.jpg" alt="Syrofen syrup 100 ml"></div>
+        <div class="gallery-item"><img src="TesunArtesunate60mg.jpg" alt="Tesun Artesunate 60 mg"></div>
+        <div class="gallery-item"><img src="TesunArtesunate120mg.jpg" alt="Tesun Artesunate 120 mg"></div>
+        <div class="gallery-item"><img src="Utervionexinjection5x1mlampoules.jpg" alt="Utervionex injection 5x1 ml ampoules"></div>
     </div>
-  </body>
+
+</body>
 </html>
